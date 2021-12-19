@@ -1,4 +1,5 @@
 package ma.enset.supplierservice;
+
 import ma.enset.supplierservice.entities.Supplier;
 import ma.enset.supplierservice.repositories.SupplierRepository;
 import org.springframework.boot.CommandLineRunner;
