@@ -16,6 +16,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +50,11 @@ public class ProductController{
         PagedModel<Supplier> pageModel =keycloakRestTemplate.getForObject("http://localhost:8083/suppliers",PagedModel.class);
         model.addAttribute("suppliers",pageModel);
         return "suppliers";
+    }
+    @ExceptionHandler (Exception.class)
+    public String errorHandler(Exception e ,Model model){
+         model.addAttribute("error","Error probleme d'autorisation !!!");
+         return "error";
     }
 
 
